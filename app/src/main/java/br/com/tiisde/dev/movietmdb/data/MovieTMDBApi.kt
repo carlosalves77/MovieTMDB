@@ -11,7 +11,7 @@ import retrofit2.http.Query
 
 interface MovieTMDBApi {
 
-    @GET("movie/upcoming")
+    @GET("movie/popular")
     @Headers("Authorization: Bearer ${Constants.API_TOKEN}")
     suspend fun getPopularMovies(
 //        @Path("movie/upcoming") upcomingMovie : String = "upcoming",
@@ -19,10 +19,9 @@ interface MovieTMDBApi {
         @Query("page") page: Int = 1
     ): Response<PopularMoviesDTO>
 
-    @GET(Constants.BASE_URL)
+    @GET("movie/upcoming")
     @Headers("Authorization: Bearer ${Constants.API_TOKEN}")
     suspend fun getUpcomingMovies(
-        @Path("movie/upcoming") upcoming : String = "upcoming",
         @Query("language") language: String = "en-US",
         @Query("page") page: Int = 1
     ): Response<UpcomingMoviesDTO>

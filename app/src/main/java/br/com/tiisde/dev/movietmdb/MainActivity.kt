@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import br.com.tiisde.dev.movietmdb.presentation.ui.popularMovies.PopularMoviesScreen
+import br.com.tiisde.dev.movietmdb.presentation.ui.upcomingMovies.UpcomingMoviesScreen
 import br.com.tiisde.dev.movietmdb.ui.theme.MovieTMDBTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,6 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MovieTMDBTheme {
                 PopularMoviesScreen()
+                UpcomingMoviesScreen()
             }
         }
     }

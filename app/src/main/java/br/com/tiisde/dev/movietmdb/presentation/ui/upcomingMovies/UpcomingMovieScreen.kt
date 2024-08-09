@@ -1,4 +1,4 @@
-package br.com.tiisde.dev.movietmdb.presentation.ui.upComingMovies
+package br.com.tiisde.dev.movietmdb.presentation.ui.upcomingMovies
 
 import android.util.Log
 import androidx.compose.runtime.Composable
@@ -8,18 +8,18 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun PopularMoviesScreen(
+fun UpcomingMoviesScreen(
     modifier: Modifier = Modifier,
-    viewModel: PopularMoviesViewModel = hiltViewModel()
+    viewModel: UpcomingMoviesViewModel = hiltViewModel()
 ) {
 
     LaunchedEffect(key1 = true, block = {
-    viewModel.getPopularMovies()
+    viewModel.getUpcomingMovies()
     })
 
-   val response = viewModel.popularMoviesResponse.collectAsState().value
+   val response = viewModel.upcomingMoviesResponse.collectAsState().value
 
-    Log.d("PopularMoviesScreen", "PopularMoviesScreen: $response")
+    Log.d("upcomingMoviesScreen", "PopularMoviesScreen: $response")
 
 
 

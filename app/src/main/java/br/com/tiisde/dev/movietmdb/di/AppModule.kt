@@ -3,6 +3,9 @@ package br.com.tiisde.dev.movietmdb.di
 import br.com.tiisde.dev.movietmdb.data.MovieTMDBApi
 import br.com.tiisde.dev.movietmdb.data.repository.RemoteDataRepositoryImpl
 import br.com.tiisde.dev.movietmdb.domain.repository.RemoteDataRepository
+import br.com.tiisde.dev.movietmdb.domain.use_case.GetPopularMoviesUseCase
+import br.com.tiisde.dev.movietmdb.domain.use_case.GetUpcomingMoviesUseCase
+import br.com.tiisde.dev.movietmdb.domain.use_case.UseCases
 import br.com.tiisde.dev.movietmdb.util.Constants
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -41,11 +44,17 @@ object AppModule {
         return RemoteDataRepositoryImpl(api)
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideMovieRepository(api: MovieApi): MovieRepository {
-//        return MovieRepositoryImpl(api)
-//    }
+  @Provides
+  @Singleton
+  fun provideUseCases(repository: RemoteDataRepository): UseCases {
+      return UseCases(
+          getPopularMoviesUseCase = GetPopularMoviesUseCase(repository),
+          getUpcomingMoviesUseCase = GetUpcomingMoviesUseCase(repository)
+      )
+
+  }
+
+
 
 
 
