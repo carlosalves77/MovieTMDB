@@ -15,14 +15,14 @@ interface MovieTMDBApi {
     @Headers("Authorization: Bearer ${Constants.API_TOKEN}")
     suspend fun getPopularMovies(
 //        @Path("movie/upcoming") upcomingMovie : String = "upcoming",
-        @Query("language") language: String = "en-US",
+        @Query("language") language: String = "pt-BR",
         @Query("page") page: Int = 1
     ): Response<PopularMoviesDTO>
 
     @GET("movie/upcoming")
     @Headers("Authorization: Bearer ${Constants.API_TOKEN}")
     suspend fun getUpcomingMovies(
-        @Query("language") language: String = "en-US",
+        @Query("language") language: String = "pt-BR",
         @Query("page") page: Int = 1
     ): Response<UpcomingMoviesDTO>
 
