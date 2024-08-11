@@ -1,5 +1,6 @@
 package br.com.tiisde.dev.movietmdb.presentation.ui.popularMovies
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,8 +26,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import br.com.tiisde.dev.movietmdb.presentation.ui.popularMovies.components.ListOfPopularMovies
+import br.com.tiisde.dev.movietmdb.presentation.ui.shimmer.ShimmerListItem
 import br.com.tiisde.dev.movietmdb.util.Result
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
+@SuppressLint("SuspiciousIndentation", "CoroutineCreationDuringComposition")
 @Composable
 fun PopularMoviesScreen(
     modifier: Modifier = Modifier,
@@ -36,6 +42,7 @@ fun PopularMoviesScreen(
     LaunchedEffect(key1 = true, block = {
         viewModel.getPopularMovies()
     })
+
 
     val response = viewModel.popularMoviesResponse.collectAsState().value
 
@@ -64,6 +71,7 @@ fun PopularMoviesScreen(
                             horizontalArrangement = Arrangement.spacedBy(4.dp),
                             content = {
                                 items(response.data.results) { result ->
+
                                     ListOfPopularMovies(result = result)
                                 }
                             },
@@ -83,10 +91,10 @@ fun PopularMoviesScreen(
                 }
 
                 is Result.Loading -> {
-
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(100.dp)
-                    )
+                    ShimmerListItem()
+//                    CircularProgressIndicator(
+//                        modifier = Modifier.size(100.dp)
+//                    )
                 }
 
                 else -> {

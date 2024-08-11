@@ -16,8 +16,6 @@ fun NavGraph(
     navController: NavHostController
 ) {
 
-
-
     NavHost(navController = navController, startDestination = MoviesScreen.PopularMovies.name) {
 
         composable(

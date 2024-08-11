@@ -1,5 +1,6 @@
 package br.com.tiisde.dev.movietmdb.presentation.ui.upcomingMovies
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,9 +24,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import br.com.tiisde.dev.movietmdb.presentation.ui.shimmer.ShimmerListItem
 import br.com.tiisde.dev.movietmdb.presentation.ui.upcomingMovies.components.ListOfUpcomingMovies
 import br.com.tiisde.dev.movietmdb.util.Result
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun UpcomingMoviesScreen(
     modifier: Modifier = Modifier,
@@ -83,10 +86,10 @@ fun UpcomingMoviesScreen(
                 }
 
                 is Result.Loading -> {
-
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(100.dp)
-                    )
+                    ShimmerListItem()
+//                    CircularProgressIndicator(
+//                        modifier = Modifier.size(100.dp)
+//                    )
                 }
 
                 else -> {

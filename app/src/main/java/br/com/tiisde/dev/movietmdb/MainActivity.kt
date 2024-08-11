@@ -19,8 +19,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             MovieTMDBTheme {
                 HomeScreen()
-//                PopularMoviesScreen()
-//                UpcomingMoviesScreen()
             }
         }
     }
