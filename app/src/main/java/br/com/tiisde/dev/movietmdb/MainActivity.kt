@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import br.com.tiisde.dev.movietmdb.presentation.ui.home.HomeScreen
+import br.com.tiisde.dev.movietmdb.presentation.ui.home.components.navigation.NavGraph
 import br.com.tiisde.dev.movietmdb.presentation.ui.popularMovies.PopularMoviesScreen
 import br.com.tiisde.dev.movietmdb.presentation.ui.upcomingMovies.UpcomingMoviesScreen
 import br.com.tiisde.dev.movietmdb.ui.theme.MovieTMDBTheme
@@ -16,8 +18,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MovieTMDBTheme {
+                HomeScreen()
 //                PopularMoviesScreen()
-                UpcomingMoviesScreen()
+//                UpcomingMoviesScreen()
             }
         }
     }
