@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import br.com.tiisde.dev.movietmdb.presentation.ui.popularMovies.components.ListOfPopularMovies
 import br.com.tiisde.dev.movietmdb.presentation.ui.shimmer.ShimmerListItem
 import br.com.tiisde.dev.movietmdb.util.Result
@@ -36,6 +37,7 @@ import kotlinx.coroutines.launch
 fun PopularMoviesScreen(
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
+    navController: NavController,
     viewModel: PopularMoviesViewModel = hiltViewModel()
 ) {
 
@@ -72,7 +74,7 @@ fun PopularMoviesScreen(
                             content = {
                                 items(response.data.results) { result ->
 
-                                    ListOfPopularMovies(result = result)
+                                    ListOfPopularMovies(result = result, navController = navController)
                                 }
                             },
 

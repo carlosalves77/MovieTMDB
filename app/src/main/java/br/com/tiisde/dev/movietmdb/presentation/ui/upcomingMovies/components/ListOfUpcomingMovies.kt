@@ -16,8 +16,10 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.tiisde.dev.movietmdb.data.dto.ResultX
+import br.com.tiisde.dev.movietmdb.presentation.ui.shimmer.ShimmerListItem
 import br.com.tiisde.dev.movietmdb.util.Constants
 import coil.compose.AsyncImage
+import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 
 
@@ -33,11 +35,14 @@ fun ListOfUpcomingMovies(result: ResultX) {
             .fillMaxSize()
     ) {
 
-        AsyncImage(
+        SubcomposeAsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
                 .data(baseURl)
                 .crossfade(true)
                 .build(),
+            loading = {
+                ShimmerListItem()
+            },
             contentScale = ContentScale.Crop,
             contentDescription = null
         )

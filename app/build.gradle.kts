@@ -92,7 +92,8 @@ dependencies {
 
     // Navigation
     val navVersion = "2.7.7"
-
     implementation ("androidx.navigation:navigation-compose:$navVersion")
 
+    // Orbital
+    implementation("com.github.skydoves:orbital:0.4.0")
 }
