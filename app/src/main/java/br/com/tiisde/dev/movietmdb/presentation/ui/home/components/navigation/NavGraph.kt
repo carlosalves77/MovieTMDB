@@ -2,18 +2,12 @@ package br.com.tiisde.dev.movietmdb.presentation.ui.home.components.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
-import br.com.tiisde.dev.movietmdb.data.dto.PopularMoviesDTO
 import br.com.tiisde.dev.movietmdb.presentation.ui.detailMovie.DetailMovieScreen
 import br.com.tiisde.dev.movietmdb.presentation.ui.popularMovies.PopularMoviesScreen
 import br.com.tiisde.dev.movietmdb.presentation.ui.upcomingMovies.UpcomingMoviesScreen
-import com.squareup.moshi.Moshi
 
 @Composable
 fun NavGraph(
@@ -36,21 +30,19 @@ fun NavGraph(
         }
 
         composable(
-            route = MoviesScreen.DetailMovie.name
-//            arguments = listOf(navArgument("movie") {
-//                type = NavType.StringType
-//                nullable = true
-//            })
-        ) { navBackStackEntry ->
-            val title = navBackStackEntry.arguments?.getString("title")
-            val poster = navBackStackEntry.arguments?.getString("poster")
+            route = "${MoviesScreen.DetailMovie.name}/{result}/{imagePoster}",
 
-            val movieDetail =  arrayListOf<String>()
+        ) { backStackEntry ->
 
-            movieDetail.add(title.toString())
-            movieDetail.add(poster.toString())
+            val resultTitle = backStackEntry.arguments?.getString("result")
+            val imagePoster = backStackEntry.arguments?.getString("imagePoster")
 
-                DetailMovieScreen(movieDetail)
+
+            DetailMovieScreen(
+                resultTitle,
+                imagePoster
+            )
+
 
         }
 

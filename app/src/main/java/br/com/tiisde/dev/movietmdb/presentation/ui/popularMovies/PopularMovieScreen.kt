@@ -94,9 +94,6 @@ fun PopularMoviesScreen(
 
                 is Result.Loading -> {
                     ShimmerListItem()
-//                    CircularProgressIndicator(
-//                        modifier = Modifier.size(100.dp)
-//                    )
                 }
 
                 else -> {

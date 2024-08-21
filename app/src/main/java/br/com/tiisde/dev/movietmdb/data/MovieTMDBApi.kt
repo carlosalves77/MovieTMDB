@@ -14,7 +14,6 @@ interface MovieTMDBApi {
     @GET("movie/popular")
     @Headers("Authorization: Bearer ${Constants.API_TOKEN}")
     suspend fun getPopularMovies(
-//        @Path("movie/upcoming") upcomingMovie : String = "upcoming",
         @Query("language") language: String = "pt-BR",
         @Query("page") page: Int = 1
     ): Response<PopularMoviesDTO>

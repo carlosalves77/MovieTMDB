@@ -7,6 +7,7 @@ import br.com.tiisde.dev.movietmdb.domain.use_case.GetPopularMoviesUseCase
 import br.com.tiisde.dev.movietmdb.domain.use_case.GetUpcomingMoviesUseCase
 import br.com.tiisde.dev.movietmdb.domain.use_case.UseCases
 import br.com.tiisde.dev.movietmdb.util.Constants
+import com.squareup.moshi.FromJson
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -43,6 +44,7 @@ object AppModule {
     fun provideMovieRepository(api: MovieTMDBApi): RemoteDataRepository {
         return RemoteDataRepositoryImpl(api)
     }
+
 
   @Provides
   @Singleton

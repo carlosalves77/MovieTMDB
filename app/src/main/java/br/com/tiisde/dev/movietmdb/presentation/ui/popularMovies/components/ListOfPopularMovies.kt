@@ -23,6 +23,8 @@ import br.com.tiisde.dev.movietmdb.presentation.ui.shimmer.ShimmerListItem
 import br.com.tiisde.dev.movietmdb.util.Constants
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -32,18 +34,16 @@ fun ListOfPopularMovies(
     navController: NavController
 ) {
 
-    val baseURl = Constants.BASE_URL_IMAGE + result.posterPath
-
+    val imagePoster = Constants.BASE_URL_IMAGE + result.posterPath
 
     Column(
         modifier = Modifier
             .fillMaxSize()
     ) {
 
-
             SubcomposeAsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(baseURl)
+                    .data(imagePoster)
                     .crossfade(true)
                     .build(),
                 loading = {
@@ -52,22 +52,15 @@ fun ListOfPopularMovies(
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 modifier = Modifier.clickable {
+
+                    val encodedUrl = URLEncoder.encode(imagePoster, StandardCharsets.UTF_8.toString())
                     navController.navigate(
-                     MoviesScreen.DetailMovie.name
+
+                        "${MoviesScreen.DetailMovie.name}/${result.title}/${encodedUrl}"
                     )
                 }
             )
-//        SubcomposeAsyncImage(
-//            model = ImageRequest.Builder(LocalContext.current)
-//                .data(baseURl)
-//                .crossfade(true)
-//                .build(),
-//            loading = {
-//                ShimmerListItem()
-//            },
-//            contentScale = ContentScale.Crop,
-//            contentDescription = null
-//        )
+
         Spacer(modifier = Modifier.size(20.dp))
         Text(
             text = result.title,
