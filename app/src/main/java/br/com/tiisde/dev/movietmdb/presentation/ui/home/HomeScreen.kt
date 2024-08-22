@@ -16,8 +16,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
-import br.com.tiisde.dev.movietmdb.presentation.ui.home.components.navigation.MoviesScreen
-import br.com.tiisde.dev.movietmdb.presentation.ui.home.components.navigation.NavGraph
+import br.com.tiisde.dev.movietmdb.presentation.ui.navigation.MoviesScreen
+import br.com.tiisde.dev.movietmdb.presentation.ui.navigation.NavGraph
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -28,11 +28,6 @@ fun HomeScreen() {
     Scaffold(
         topBar = {
             TopAppBar(
-
-//                colors = topAppBarColors(
-//                    containerColor = Color.Red,
-//                    titleContentColor = Color.White
-//                ),
                 title = {
 
                     Row(

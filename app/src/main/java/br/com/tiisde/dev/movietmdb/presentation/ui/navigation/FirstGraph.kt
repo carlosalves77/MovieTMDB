@@ -1,4 +1,4 @@
-package br.com.tiisde.dev.movietmdb.presentation.ui.home.components.navigation
+package br.com.tiisde.dev.movietmdb.presentation.ui.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
@@ -30,19 +30,18 @@ fun NavGraph(
         }
 
         composable(
-            route = "${MoviesScreen.DetailMovie.name}/{result}/{imagePoster}",
+            route = "${MoviesScreen.DetailMovie.name}/{movieTitle}/{imagePoster}/{movieDescription}",
+            ) { backStackEntry ->
 
-        ) { backStackEntry ->
-
-            val resultTitle = backStackEntry.arguments?.getString("result")
+            val resultTitle = backStackEntry.arguments?.getString("movieTitle")
             val imagePoster = backStackEntry.arguments?.getString("imagePoster")
-
+            val movieDescription = backStackEntry.arguments?.getString("movieDescription")
 
             DetailMovieScreen(
                 resultTitle,
-                imagePoster
+                imagePoster,
+                movieDescription
             )
-
 
         }
 

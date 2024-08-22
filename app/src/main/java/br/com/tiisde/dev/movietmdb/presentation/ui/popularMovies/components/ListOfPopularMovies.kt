@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import br.com.tiisde.dev.movietmdb.data.dto.Result
-import br.com.tiisde.dev.movietmdb.presentation.ui.home.components.navigation.MoviesScreen
+import br.com.tiisde.dev.movietmdb.presentation.ui.navigation.MoviesScreen
 import br.com.tiisde.dev.movietmdb.presentation.ui.shimmer.ShimmerListItem
 import br.com.tiisde.dev.movietmdb.util.Constants
 import coil.compose.SubcomposeAsyncImage
@@ -56,7 +56,7 @@ fun ListOfPopularMovies(
                     val encodedUrl = URLEncoder.encode(imagePoster, StandardCharsets.UTF_8.toString())
                     navController.navigate(
 
-                        "${MoviesScreen.DetailMovie.name}/${result.title}/${encodedUrl}"
+                        "${MoviesScreen.DetailMovie.name}/${result.title}/${encodedUrl}/${result.overview}"
                     )
                 }
             )

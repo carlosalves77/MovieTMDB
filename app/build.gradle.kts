@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.lifecycle.runtime.compose.android)
     implementation(libs.play.services.basement)
     testImplementation(libs.junit)
@@ -77,8 +78,6 @@ dependencies {
     // Extended Icons
     implementation("androidx.compose.material:material-icons-extended:1.6.8")
 
-    // Navigation
-    implementation("androidx.navigation:navigation-compose:2.7.7")
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
